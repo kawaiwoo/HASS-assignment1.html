@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PSI Data</title>
+</head>
+<body>
+  <h1>PSI Data</h1>
+  <div id="data"></div>
+  <script>
+    fetch("https://api.data.gov.sg/v1/environment/psi")
+    .then(response => response.json())
+    .then(data => {
+      let psi = data.items[0].readings.psi_twenty_four_hourly.national;
+      document.getElementById("data").innerHTML = "National PSI: " + psi;
+    })
+    .catch(error => console.log(error));
+  </script>
+</body>
+</html>
